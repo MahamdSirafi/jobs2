@@ -1,0 +1,156 @@
+:root {
+  --main-color: #10cab7;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: serif, sans-serif;
+}
+.continer {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .continer {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .continer {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .continer {
+    width: 1170px;
+  }
+}
+.header {
+  padding: 20px;
+}
+.header .continer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo {
+  width: 40px;
+}
+.header .links {
+  position: relative;
+}
+.header .links:hover .icons span:nth-child(2) {
+  width: 100%;
+}
+.header .links .icons {
+  width: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.header .links .icons span {
+  background-color: #333;
+  margin-bottom: 5px;
+  height: 2px;
+}
+.header .links .icons span:first-child {
+  width: 100%;
+}
+.header .links .icons span:nth-child(2) {
+  width: 60%;
+  transition: 0, 2%;
+}
+.header .links .icons span:last-child {
+  width: 100%;
+}
+.header .links ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f6f6f6;
+  position: absolute;
+  right: 0px;
+  min-width: 200px;
+  top: calc(100% + 15px);
+  display: none;
+  z-index: 1;
+}
+.header .links ul::before {
+  content: "";
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #f6f6f6 transparent;
+  position: absolute;
+  right: 5px;
+  top: -20px;
+}
+
+.header .links:hover ul {
+  display: block;
+}
+
+.header .links ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+
+.header .links ul li a:hover {
+  padding-left: 25px;
+}
+.header .links ul li:not(:last-child) a {
+  border-bottom: 2px solid #ddd;
+}
+.loading {
+  background-image: url(../img/floriane-vita-FyD3OWBuXnY-unsplash.jpg);
+  background-size: cover;
+  height: calc(100vh - 64px);
+  position: relative;
+}
+.loading .intro-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 320px;
+  max-width: 100%;
+}
+
+.loading .intro-text h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 40px;
+  color: rgb(3, 3, 78);
+}
+
+.loading .intro-text h2 {
+  font-size: 19px;
+  line-height: 1, 8px;
+}
+h1 {
+  z-index: 1;
+  opacity: 2;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ddd;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+@media screen and (max-width: 600px) {
+  .button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
