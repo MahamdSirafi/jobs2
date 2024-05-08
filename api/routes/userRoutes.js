@@ -36,7 +36,6 @@ router
   .route('/')
   .get(
     authMiddlewers.protect,
-    authMiddlewers.isactive,
     authMiddlewers.restrictTo('admin'),
     userController.getAllUsers
   )
