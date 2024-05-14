@@ -74,12 +74,16 @@ app.use(
 //ضغط البيانات قبل ارسالها من اجل تسريع النقل
 app.use(compression());
 const userRouter = require('./routes/userRoutes');
+const postsRouter= require('./routes/postsRouter')
+const postsRouter= require('./routes/postsRouter')
 const postRouter= require('./routes/postRouter')
 const messageRouter= require('./routes/messageRouter')
 
 // 3) ROUTES
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 app.use('/', userRouter);
+app.use('/api/v1.0.0/postss', postsRouter);
+app.use('/api/v1.0.0/postss', postsRouter);
 app.use('/api/v1.0.0/posts', postRouter);
 app.use('/api/v1.0.0/messages', messageRouter);
 app.use('/api/v1.0.0/users', userRouter);
