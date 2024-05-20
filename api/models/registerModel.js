@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Message = require('./messageModel');
+const Post = require('./postModel');
 const registerSchema = new mongoose.Schema(
   {
     name: {
@@ -14,7 +16,6 @@ const registerSchema = new mongoose.Schema(
       type: String,
     },
     result: {
-      required: [true, 'must enter result'],
       type: Number,
     },
     status: {
@@ -38,5 +39,34 @@ const registerSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
+registerSchema.post('findOneAndUpdate', async function (doc) {
+  const post = await Post.findById(doc.post).populate({
+    path: 'owner',
+    select: 'name company',
+  });
+  switch (doc.status) {
+    case 'testing': {
+      await Message.create({
+        user: doc.user,
+        message: `dear ${doc.name} go to testing ${post.job} in ${post.owner.company.name}`,
+      });
+      break;
+    }
+    case 'accept': {
+      await Message.create({
+        user: doc.user,
+        message: `dear ${doc.name} you are acceptd for position ${post.job} in ${post.owner.company.name}`,
+      });
+      break;
+    }
+    case 'reject': {
+      await Message.create({
+        user: doc.user,
+        message: `dear ${doc.name} you are reject for position ${post.job} in ${post.owner.company.name}`,
+      });
+      break;
+    }
+  }
+});
 const Register = mongoose.model('Register', registerSchema);
 module.exports = Register;

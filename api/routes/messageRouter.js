@@ -17,6 +17,6 @@ router
 router
   .route('/:id')
   .get(messageController.getmessage)
-  .patch(messageController.updatemessage)
+  .patch(authMiddlewers.restrictTo('admin'), messageController.updatemessage)
   .delete(messageController.deletemessage);
 module.exports = router;

@@ -6,15 +6,7 @@ exports.getposts = handlerFactory.getOne(Posts);
 exports.createposts = handlerFactory.createOne(Posts);
 exports.updateposts = handlerFactory.updateOne(Posts);
 exports.deleteposts = handlerFactory.deleteOne(Posts);
-exports.getAllposts = handlerFactory.getAll(Posts);
-exports.defult = catchAsync(async (req, res, next) => {
-  //write your code here
-  const doc = [];
-  if (!doc) {
-    return new AppError('Message Error', 400);
-  }
-  res.status(200).json({
-    status: 'success',
-    doc,
-  });
+exports.getAllposts = handlerFactory.getAllpop1(Posts, {
+  path: 'owner',
+  select: 'name company',
 });

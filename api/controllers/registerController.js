@@ -12,4 +12,7 @@ exports.deleteregister = handlerFactory.deleteOne(Register);
 exports.getAllregister = handlerFactory.getAllpop1(Register, {
   path: 'user',
   select: 'name photo -_id',
+},{
+  path: 'post',
+  select: '-test -createdAt -updatedAt',
 });
