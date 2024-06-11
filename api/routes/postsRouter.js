@@ -15,7 +15,9 @@ router
   );
 router
   .route('/')
-  .get(postsController.getAllposts)
+  .get(
+    dynamicMiddleware.addQuery('fields', '-test'),
+    postsController.getAllposts)
   .post(
     authMiddlewers.restrictTo('mgr'),
     dynamicMiddleware.addVarBody('owner', 'userId'),

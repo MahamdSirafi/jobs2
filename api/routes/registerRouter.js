@@ -30,4 +30,4 @@ router
   .get(registerController.getregister)
   .patch(registerController.updateregister)
   .delete(registerController.deleteregister);
-module.exports = router;
+  module.exports = router;

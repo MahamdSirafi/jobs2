@@ -3,6 +3,7 @@ const userController = require('./../controllers/userController');
 const authController = require('./../controllers/authController');
 const authMiddlewers = require('./../middlewares/authMiddlewers');
 const { uploadUserPhoto } = require('./../middlewares/imgUsertMiddlewar');
+const { uploaduserPhoto } = require('./../middlewares/userMiddlewar');
 const router = express.Router();
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
@@ -30,15 +31,17 @@ router.patch(
   uploadUserPhoto,
   userController.updateMe
 );
+router.patch(
+  '/updateMeAndUploadUser',
+  authMiddlewers.protect,
+  uploaduserPhoto,
+  userController.updateMeUser
+);
 router.patch('/updateMe', authMiddlewers.protect, userController.updateMe);
 router.delete('/deleteMe', authMiddlewers.protect, userController.deleteMe);
 router
   .route('/')
-  .get(
-    authMiddlewers.protect,
-    authMiddlewers.restrictTo('admin'),
-    userController.getAllUsers
-  )
+  .get(authMiddlewers.protect, userController.getAllUsers)
   .post(
     authMiddlewers.protect,
     authMiddlewers.isactive,
